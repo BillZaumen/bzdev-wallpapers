@@ -1,0 +1,22 @@
+Copyright and license:
+
+Copyright (C) 2020 by Bill Zaumen
+This software and image files are being distributed WITHOUT ANY
+WARRANTY and without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+for more details.
+
+That said, the Debian package that this software creates consists of
+'wallpaper': image files and an XML file to make the wallpaper
+accessible in a gnome environment.  What could possibly go wrong?
+
+The program included requires a library that has (as of June 17, 2020)
+not been publicly released.  However, that program was used merely to
+create the image file(s) that have been included and is not needed after
+the image file(s) have been created. Parts of it may be useful for
+illustrative purposes (there are more efficient algorithms for
+computing a Hilbert space-filling curve but this program only needed
+to be run a very small number of times).
+
+On Debian systems, version 3 of the GPL license can be found in the
+file /usr/share/common-licenses/GPL-3 .

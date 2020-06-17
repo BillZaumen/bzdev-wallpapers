@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+  <wallpaper>
+    <name>Gray-Brown Hilbert Space Filling Curve (by Bill Zaumen)</name>
+    <filename>/usr/share/backgrounds/BZDev-Hilbert_Curve_Gray_Brown-by_Bill_Zaumen.png</filename>
+    <options>zoom</options>
+    <pcolor>#000000</pcolor>
+    <scolor>#000000</scolor>
+  </wallpaper>
+  <wallpaper>
+    <name>Dark-Blue Hilbert Space Filling Curve (by Bill Zaumen)</name>
+    <filename>/usr/share/backgrounds/BZDev-Hilbert_Curve_Dark_Blue-by_Bill_Zaumen.png</filename>
+    <options>zoom</options>
+    <pcolor>#000000</pcolor>
+    <scolor>#000000</scolor>
+  </wallpaper>
+</wallpapers>

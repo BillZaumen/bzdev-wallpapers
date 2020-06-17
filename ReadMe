@@ -1,0 +1,96 @@
+
+The package bzdev-wallpapers contains a series of image files
+containing 'wallpaper' images for use on Debian systems. The images
+are based on David Hilbert's space-filling curve, and are intended to
+provide a low-key, unobtrusive background that could work well with
+Pop!_OS "dark mode", where it can be annoying if the 'wallpaper' is
+too bright.  The space filling curve was added to make it easier to
+detect the boundaries of a window in cases where it or its contents
+(for some reason) match the color of a background.
+
+The images are
+
+   * BZDev-Hilbert_Curve_Dark_Blue-by_Bill_Zaumen.png
+
+   * BZDev-Hilbert_Curve_Gray_Brown-by_Bill_Zaumen.png
+
+and use the same pattern but in different foreground and background
+colors (by design these are similar). The naming convention for these
+files was based on the pattern used by image files provided by the
+packages system76-wallpapers and pop-wallpapers. The background colors
+were chosen to match ones used by a couple of files in these two
+packages.
+
+The images were generated with the program in the file
+HilbertCurve.java (which requires a library that as of June 17, 2020
+has not been put on GitHub).  This program is needed to create the
+images, but the images are included in this git repository, so the
+Java program does not have to be run unless new files are added or the
+images were changed (by modifying HilbertCurve.java or its use in
+Makefile).  Because it is desirable to be able to build the package
+without running Java (due to a library being not yet available), the
+image files are included in the git repository.
+
+To build a Debian package,  run
+
+   make package
+
+and everything should happen automatically (one should first change
+the VERSION variable in the makefile and change the name of the
+package if the Makefile or Java class is modified).
+
+The Other files used are
+
+    * bzdev-wallpapers.xml - an XML file required by gnome defining
+      properties for each wallpaper image. This has to be modified if
+      additional images are added or if an image is modified and given
+      a different name
+
+    * control - the Debian control file.
+
+    * copyright - the standard copyright/license file.
+
+    * changelog - the changelog file.
+
+    * Makefile - in particular, the command-line arguments for
+      creating the images are located in this file.
+
+The programs needed to build a package are 'install', gzip, fakeroot,
+and dpkg-deb.  The corresponding Debian packages are
+
+    * fakeroot
+
+    * coreutils
+
+    * gzip
+
+    * dpkg
+
+and any packages these require.
+
+To run the Java program, use
+
+   java -p /usr/share/bzdev -m org.bzdev.graphics HilberCurve \
+   	FILENAME COLOR LEVEL DEPTH
+
+where
+    * FILENAME is the name of the image file to be created. It should
+      end with the suffix ".png".
+
+    * COLOR is a hexadecimal number starting with '0x' and followed by
+      6 hexadecimal digits, 2 each for the red, green, and blue color
+      components in that order.
+
+    * LEVEL is used to get the foreground color from the background
+      color. It is the number of times the method brighter() is called
+      on a color whose initial value is the background color when
+      LEVEL is positive and its absolute value the number of time the
+      method darker() is called on a color whose initial value is the
+      background color when the value of LEVEL is negative.
+
+    * DEPTH is a limit on the number of recursive calls used when
+      generating the curve.  A good value is '6'.
+
+Because gnome window managers seem to leave bar at the top and this
+bar covers part of the image, some extra width is allowed at the top
+of the image before the curve starts.
